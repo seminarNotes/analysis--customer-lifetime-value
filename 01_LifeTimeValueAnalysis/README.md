@@ -110,6 +110,8 @@ $$(\hat{r}, \hat{\alpha}, \hat{a}, \hat{b})$$
 
 $$\argmin_{(r, \alpha, a, b)}\sum_{i \leq n}{(\mathcal{F}^{\text{actual}}_{i} - \mathcal{F}^{\text{model}}_{i}(r, \alpha, a, b))^{2}}$$
 
+$$\argmin_{(r, \alpha, a, b)}\sum_{i \leq n}{(F^{\text{actual}}_{i} - F^{\text{model}}_{i}(r, \alpha, a, b))^{2}}$$
+
 
 또,같은 방법으로, Gamma-Gamma 모델의 모수를 추정할 때, 모델 모수는 실제 monetary value 모델에 의해 계산 되는 monetary value와 간의 차이를 최소화하는 방식으로 유도된다. 따라서, 다음 방정식을 얻는다.
 
