@@ -105,17 +105,7 @@ $$MSE =\frac{1}{n} \sum_{i \leq n}{(y_{i} - \hat{y}_{i})^2}$$
 
 BG/NBD 모델의 모수를 추정할 때, 모델 모수는 실제 frequency와 모델 frequency와 간의 차이를 최소화하는 방식으로 유도된다. 만약 평균 제곱 오차(MSE)가 오차 계산 함수로 선택된 경우, 모델 모수는 다음 방정식을 사용하여 추정된다.
 
-$$(\hat{r}, \hat{\alpha}, \hat{a}, \hat{b})$$
-
-
-$$\argmin_{(r, \alpha, a, b)}\sum_{i \leq n}{(\mathcal{F}^{\text{actual}}_{i} - \mathcal{F}^{\text{model}}_{i}(r, \alpha, a, b))^{2}}$$
-
-$$\argmin_{(r, \alpha, a, b)}\sum_{i \leq n}{(F^{\text{actual}}_{i} - F^{\text{model}}_{i}(r, \alpha, a, b))^{2}}$$
-
-$$\sum_{i \leq n}{(F^{\text{actual}}_{i} - F^{\text{model}}_{i}(r, \alpha, a, b))^{2}}$$
-
-$$\argmin_{(r, \alpha, a, b)}\sum_{i \leq n}{(F_{i} - F^_{i}(r, \alpha, a, b))^{2}}$$
-
+$$(\hat{r}, \hat{\alpha}, \hat{a}, \hat{b}) = \argmin_{(r, \alpha, a, b)}\sum_{i \leq n}{(\mathcal{F}^{\text{actual}}_{i} - \mathcal{F}^{\text{model}}_{i}(r, \alpha, a, b))^{2}}$$
 
 또,같은 방법으로, Gamma-Gamma 모델의 모수를 추정할 때, 모델 모수는 실제 monetary value 모델에 의해 계산 되는 monetary value와 간의 차이를 최소화하는 방식으로 유도된다. 따라서, 다음 방정식을 얻는다.
 
