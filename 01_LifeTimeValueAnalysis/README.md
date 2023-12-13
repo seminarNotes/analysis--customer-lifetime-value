@@ -1,6 +1,6 @@
 # Post1 : 고객생애가치 분석  
 최초 작성일 : 2023-12-10  
-마지막 수정일 : 2023-12-12
+마지막 수정일 : 2023-12-13
   
 ## 0. Overview
 판매 내역 데이터와 고객 데이터를 활용하여, EDA분석 및 LTV분석을 한 파이썬 파일을 설명하는 글이다. 
@@ -13,7 +13,6 @@
 5. [Reference](#5.-Reference)
 
 ## 1. Introduction 
-
 
 고객생애가치 LTV는 'Life-Time Value'의 줄임말로, 고객이 평생 동안 기업에게 어느 정도의 금전적 가치를 가져다 주는지를 정량화한 지표를 의미한다. LTV 지표는 유료 웹 서비스를 제공하는 업체나 카드 회사, 게임 회사에서 많이 사용되어 왔으나, 최근 많은 시장(거래)가 전산화가 되고 있기 때문에 더욱 많은 기업에서 마케팅 지표로 활용되고 있다. 지표는 (예상 구매 횟수) X (예상 평균 수익)으로 계산되며, (예상 구매 횟수)는 BG/NBD(Beta, Geometic / Negative Binomial) 모형을 따르고, 예상 평균 수익은 Gamma-Gamma 모형에 의해 산출됩니다. 이를 위해, R (Recency), F (Frequency), T (Time), M (Monetary Value)의 정보가 요구된다. 이를 위해 다음과 같은 순서로 분석을 수행하였다.
 
@@ -105,11 +104,11 @@ $$MSE =\frac{1}{n} \sum_{i \leq n}{(y_{i} - \hat{y}_{i})^2}$$
 
 BG/NBD 모델의 모수를 추정할 때, 모델 모수는 실제 frequency와 모델 frequency와 간의 차이를 최소화하는 방식으로 유도된다. 만약 평균 제곱 오차(MSE)가 오차 계산 함수로 선택된 경우, 모델 모수는 다음 방정식을 사용하여 추정된다.
 
-$$(\hat{r}, \hat{\alpha}, \hat{a}, \hat{b}) = \argmin_{(r, \alpha, a, b)}\sum_{i \leq n}{(\mathcal{F}^{\text{actual}}_{i} - \mathcal{F}^{\text{model}}_{i}(r, \alpha, a, b))^{2}}$$
+$$(\hat{r}, \hat{\alpha}, \hat{a}, \hat{b}) = \arg\min_{(r, \alpha, a, b)}\sum_{i \leq n} \left[ \text{Actual Frequency}(i) - \text{Predicted Frequency}(i)(r, \alpha, a, b) \right]^2$$
 
 또,같은 방법으로, Gamma-Gamma 모델의 모수를 추정할 때, 모델 모수는 실제 monetary value 모델에 의해 계산 되는 monetary value와 간의 차이를 최소화하는 방식으로 유도된다. 따라서, 다음 방정식을 얻는다.
 
-$$(\hat{p}, \hat{q}, \hat{r}) = \argmin_{(p, q, r)}\sum_{i \leq n}{(\mathcal{M}^{\text{actual}}_{i} - \mathcal{M}^{\text{model}}_{i}(p, q, r))^2}$$
+$$(\hat{p}, \hat{q}, \hat{r}) = \arg\min_{(p, q, r)}\sum_{i \leq n} \left[ \text{Actual Monetary}(i) - \text{Predicted Monetary}(i)(p, q, r) \right]^2$$
 
 함수를 실행하면, BG-NBD모델과 Gamma-Gamma모델은 주어진 데이터를 통해 모수를 추정하게 되고, 소요 시간은 각각 27초와 8초로 측정이 되었으며, 오차는 약 5.322와 292.687이다.
 ![dataflow](./components/result_calibration.png)
